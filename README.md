@@ -28,3 +28,16 @@ Educational materials:
 #### Day #0
 I chose a book, created a project repository, and wrote a README.md.
 
+#### Day #1
+Created echo server with Rust(TcpListener). Test by telnet:
+```
+➜ telnet 127.0.0.1 8080
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+hello
+hello
+world
+world
+Connection closed by foreign host.
+```

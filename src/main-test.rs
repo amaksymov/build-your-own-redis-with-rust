@@ -1,7 +1,10 @@
 use std::{net::{TcpListener, TcpStream}, io::{BufReader, BufRead, Write, Read}};
+use std::str;
 
 
 fn handle_client(mut stream: TcpStream) {
+    let response = "+PONG\r\n";
+
     loop {
         let mut read = [0; 1028];
         match stream.read(&mut read) {
@@ -10,7 +13,9 @@ fn handle_client(mut stream: TcpStream) {
                     // connection was closed
                     break;
                 }
-                stream.write_all(&read).unwrap();
+                println!("{:?}", read);
+                println!("{}", str::from_utf8(&read).unwrap());
+                stream.write_all(response.as_bytes()).unwrap();
             }
             Err(e) => {
                 println!("error: {}", e);
@@ -33,3 +38,4 @@ fn main() {
         }
     }
 }
+
